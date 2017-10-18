@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import Utils from './utils'
+import Utils from './utils';
 
 export default class App extends React.Component {
     constructor() {

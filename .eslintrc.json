@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "prettier",
+    "universe/native"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
