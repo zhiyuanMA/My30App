@@ -48,7 +48,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        const components = this.state.days.map((elem, index) => {
+        const showcases = this.state.days.map((elem, index) => {
             return (
                 <TouchableHighlight
                     key={elem.key}
@@ -95,7 +95,7 @@ export default class App extends React.Component {
                         </View>
                     </TouchableHighlight>
                 </Swiper>
-                <View style={styles.touchBoxContainer}>{components}</View>
+                <View style={styles.touchBoxContainer}>{showcases}</View>
             </ScrollView>
         );
     }
