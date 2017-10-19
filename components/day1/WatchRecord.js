@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
-import { ListView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Utils from '../../utils';
 
 export default class WatchRecord extends Component {
     static propTypes = {
-        record: PropTypes.array.isRequired,
+        records: PropTypes.array.isRequired,
     };
 
     render() {
-        let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-            theDataSource = ds.cloneWithRows(this.props.record);
-
+        // let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
+        //     theDataSource = ds.cloneWithRows(this.props.record);
+        const { records } = this.props;
         return (
-            <ListView
+            <FlatList
                 style={styles.recordList}
-                dataSource={theDataSource}
-                renderRow={rowData => (
-                    <View style={styles.recordItem}>
-                        <Text style={styles.recordItemTitle}>{rowData.title}</Text>
-                        <View style={{ alignItems: 'center' }}>
-                            <Text style={styles.recordItemTime}>{rowData.time}</Text>
+                data={records}
+                keyExtractor={item => item.key}
+                renderItem={({ item }) => {
+                    return (
+                        <View style={styles.recordItem}>
+                            <Text style={styles.recordItemTitle}>{item.title}</Text>
+                            <View style={{ alignItems: 'center' }}>
+                                <Text style={styles.recordItemTime}>{item.time}</Text>
+                            </View>
                         </View>
-                    </View>
-                )}
+                    );
+                }}
             />
         );
     }

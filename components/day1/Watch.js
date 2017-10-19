@@ -17,12 +17,12 @@ export default class Watch extends Component {
             timeAccumulation: 0,
             totalTime: '00:00.00',
             sectionTime: '00:00.00',
-            recordCounter: 0,
-            record: [
-                { title: '', time: '' },
-                { title: '', time: '' },
-                { title: '', time: '' },
-                { title: '', time: '' },
+            recordCounter: 4,
+            records: [
+                { key: 0, title: '', time: '' },
+                { key: 1, title: '', time: '' },
+                { key: 2, title: '', time: '' },
+                { key: 3, title: '', time: '' },
             ],
         };
     }
@@ -96,17 +96,12 @@ export default class Watch extends Component {
     }
 
     _addRecord() {
-        let { recordCounter, record } = this.state;
-
-        if (++recordCounter < 8) {
-            record.pop();
-        }
-
-        record.unshift({ title: 'Lab' + recordCounter, time: this.state.sectionTime });
+        let { recordCounter, records } = this.state;
+        records.unshift({ key: recordCounter++, title: 'Lab' + recordCounter, time: this.state.sectionTime });
         this.setState({
             recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
             recordCounter: recordCounter,
-            record: record,
+            records: records,
         });
     }
 
@@ -120,12 +115,12 @@ export default class Watch extends Component {
             timeAccumulation: 0,
             totalTime: '00:00.00',
             sectionTime: '00:00.00',
-            recordCounter: 0,
-            record: [
-                { title: '', time: '' },
-                { title: '', time: '' },
-                { title: '', time: '' },
-                { title: '', time: '' },
+            recordCounter: 4,
+            records: [
+                { key: 0, title: '', time: '' },
+                { key: 1, title: '', time: '' },
+                { key: 2, title: '', time: '' },
+                { key: 3, title: '', time: '' },
             ],
         });
     }
@@ -140,7 +135,7 @@ export default class Watch extends Component {
                     startWatch={() => this._startWatch()}
                     stopWatch={() => this._stopWatch()}
                 />
-                <WatchRecord record={this.state.record} />
+                <WatchRecord records={this.state.records} />
             </View>
         );
     }
