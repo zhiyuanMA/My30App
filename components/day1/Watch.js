@@ -17,13 +17,8 @@ export default class Watch extends Component {
             timeAccumulation: 0,
             totalTime: '00:00.00',
             sectionTime: '00:00.00',
-            recordCounter: 4,
-            records: [
-                { key: 0, title: '', time: '' },
-                { key: 1, title: '', time: '' },
-                { key: 2, title: '', time: '' },
-                { key: 3, title: '', time: '' },
-            ],
+            recordCounter: 0,
+            records: [],
         };
     }
 
@@ -96,12 +91,13 @@ export default class Watch extends Component {
     }
 
     _addRecord() {
-        let { recordCounter, records } = this.state;
-        records.unshift({ key: recordCounter++, title: 'Lab' + recordCounter, time: this.state.sectionTime });
+        let { recordCounter } = this.state;
+        let counter = recordCounter;
+        counter++;
         this.setState({
             recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
-            recordCounter: recordCounter,
-            records: records,
+            recordCounter: this.state.recordCounter + 1,
+            records: [{ key: counter, title: 'Lab' + counter, time: this.state.sectionTime }, ...this.state.records],
         });
     }
 
@@ -109,19 +105,14 @@ export default class Watch extends Component {
         this.setState({
             stopWatch: false,
             resetWatch: true,
-            intialTime: 0,
+            initialTime: 0,
             currentTime: 0,
             recordTime: 0,
             timeAccumulation: 0,
             totalTime: '00:00.00',
             sectionTime: '00:00.00',
-            recordCounter: 4,
-            records: [
-                { key: 0, title: '', time: '' },
-                { key: 1, title: '', time: '' },
-                { key: 2, title: '', time: '' },
-                { key: 3, title: '', time: '' },
-            ],
+            recordCounter: 0,
+            records: [],
         });
     }
 

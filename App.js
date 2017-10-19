@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import MainView from './components/main/MainView';
 import Watch from './components/day1/Watch';
 
-const SimpleApp = StackNavigator({
+const Showcase = StackNavigator({
     Home: { screen: MainView },
     Watch: { screen: Watch },
 });
@@ -16,6 +16,6 @@ export default class App extends React.Component {
     }
 
     render() {
-        return <SimpleApp />;
+        return <Showcase />;
     }
 }

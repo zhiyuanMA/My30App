@@ -38,24 +38,17 @@ const styles = StyleSheet.create({
         height: 170,
     },
     faceWraper: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        // alignItems: 'flex-end',
     },
     sectionTime: {
         fontSize: 20,
         fontWeight: '100',
-        // paddingRight: 30,
         color: '#555',
-        position: 'absolute',
-        // left: Utils.size.width - 140,
-        // top: 30,
     },
     totalTime: {
-        fontSize: Utils.size.width === 375 ? 70 : 60,
+        fontSize: Utils.size.width === 375 ? 80 : 70,
         fontWeight: '100',
         color: '#222',
-        // paddingLeft: 20,
     },
 });

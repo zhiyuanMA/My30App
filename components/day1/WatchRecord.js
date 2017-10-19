@@ -10,8 +10,6 @@ export default class WatchRecord extends Component {
     };
 
     render() {
-        // let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-        //     theDataSource = ds.cloneWithRows(this.props.record);
         const { records } = this.props;
         return (
             <FlatList
@@ -22,9 +20,7 @@ export default class WatchRecord extends Component {
                     return (
                         <View style={styles.recordItem}>
                             <Text style={styles.recordItemTitle}>{item.title}</Text>
-                            <View style={{ alignItems: 'center' }}>
-                                <Text style={styles.recordItemTime}>{item.time}</Text>
-                            </View>
+                            <Text style={styles.recordItemTime}>{item.time}</Text>
                         </View>
                     );
                 }}

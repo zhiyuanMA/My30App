@@ -29,7 +29,7 @@ export default class WatchControl extends Component {
             this.setState({
                 startBtnText: 'Stop',
                 startBtnColor: '#60B644',
-                stopBtnTxt: 'Lap',
+                stopBtnText: 'Lap',
                 underlayColor: '#fff',
                 watchOn: true,
             });
