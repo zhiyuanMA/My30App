@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Utils from '../../utils';
+import Utils from '../utils';
 
 export default class WatchRecord extends Component {
     static propTypes = {

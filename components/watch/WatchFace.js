@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-import Utils from '../../utils';
+import Utils from '../utils';
 
 export default class WatchFace extends Component {
     static propTypes = {

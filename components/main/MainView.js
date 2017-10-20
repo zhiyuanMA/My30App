@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import Utils from '../../utils';
+import Utils from '../utils';
 
 export default class MainView extends Component {
     static navigationOptions = {

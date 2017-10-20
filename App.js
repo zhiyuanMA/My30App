@@ -3,7 +3,7 @@ import { StatusBar, StyleSheet } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import MainView from './components/main/MainView';
-import Watch from './components/day1/Watch';
+import Watch from './components/watch/Watch';
 
 const Showcase = StackNavigator({
     Home: { screen: MainView },
