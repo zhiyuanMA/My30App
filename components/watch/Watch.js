@@ -95,15 +95,19 @@ export default class Watch extends Component {
 
     _addRecord() {
         let { recordCounter } = this.state;
-        let counter = recordCounter;
-        counter++;
+        recordCounter++;
         const colors = ['#FF0000', '#FF00FF', '#00FF00', '#808080', '#FFFF00', '#0000FF'];
-        const index = counter % colors.length;
+        const index = recordCounter % colors.length;
         this.setState({
             recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
-            recordCounter: this.state.recordCounter + 1,
+            recordCounter: recordCounter,
             records: [
-                { key: counter, title: 'Lab' + counter, time: this.state.sectionTime, color: colors[index] },
+                {
+                    key: recordCounter,
+                    title: 'Lab' + recordCounter,
+                    time: this.state.sectionTime,
+                    color: colors[index],
+                },
                 ...this.state.records,
             ],
         });
