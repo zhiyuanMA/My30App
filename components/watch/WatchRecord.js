@@ -19,8 +19,8 @@ export default class WatchRecord extends Component {
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.recordItem}>
-                            <Text style={styles.recordItemTitle}>{item.title}</Text>
-                            <Text style={styles.recordItemTime}>{item.time}</Text>
+                            <Text style={[styles.recordItemTitle, { color: item.color }]}>{item.title}</Text>
+                            <Text style={[styles.recordItemTime, { color: item.color }]}>{item.time}</Text>
                         </View>
                     );
                 }}
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'left',
         paddingLeft: 20,
-        color: '#777',
+        // color: '#777',
     },
     recordItemTime: {
         backgroundColor: 'transparent',
         flex: 1,
         textAlign: 'right',
         paddingRight: 20,
-        color: '#222',
+        // color: '#222',
     },
 });

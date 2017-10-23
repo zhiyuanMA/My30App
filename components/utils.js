@@ -26,7 +26,6 @@ const Utils = {
                 callback(responseData);
             });
     },
-    key: 'MY-30-DAY-REACT-NATIVE',
 };
 
 export default Utils;

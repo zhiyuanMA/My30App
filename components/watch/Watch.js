@@ -5,21 +5,23 @@ import WatchRecord from './WatchRecord';
 import WatchFace from './WatchFace';
 import WatchControl from './WatchControl';
 
+let interval;
+const initialState = {
+    stopWatch: false,
+    resetWatch: true,
+    initialTime: 0,
+    currentTime: 0,
+    recordTime: 0,
+    timeAccumulation: 0,
+    totalTime: '00:00.00',
+    sectionTime: '00:00.00',
+    recordCounter: 0,
+    records: [],
+};
 export default class Watch extends Component {
     constructor() {
         super();
-        this.state = {
-            stopWatch: false,
-            resetWatch: true,
-            initialTime: 0,
-            currentTime: 0,
-            recordTime: 0,
-            timeAccumulation: 0,
-            totalTime: '00:00.00',
-            sectionTime: '00:00.00',
-            recordCounter: 0,
-            records: [],
-        };
+        this.state = { ...initialState };
     }
 
     componentWillUnmount() {
@@ -49,7 +51,7 @@ export default class Watch extends Component {
         }
 
         let milSecond, second, minute, countingTime, secmilSecond, secsecond, secminute, seccountingTime;
-        let interval = setInterval(() => {
+        interval = setInterval(() => {
             this.setState({
                 currentTime: new Date().getTime(),
             });
@@ -76,10 +78,10 @@ export default class Watch extends Component {
                     (secmilSecond < 10 ? '0' + secmilSecond : secmilSecond),
             });
             if (this.state.stopWatch) {
+                clearInterval(interval);
                 this.setState({
                     timeAccumulation: countingTime,
                 });
-                clearInterval(interval);
             }
         }, 10);
     }
@@ -88,32 +90,27 @@ export default class Watch extends Component {
         this.setState({
             stopWatch: true,
         });
+        clearInterval(interval);
     }
 
     _addRecord() {
         let { recordCounter } = this.state;
         let counter = recordCounter;
         counter++;
+        const colors = ['#FF0000', '#FF00FF', '#00FF00', '#808080', '#FFFF00', '#0000FF'];
+        const index = counter % colors.length;
         this.setState({
             recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
             recordCounter: this.state.recordCounter + 1,
-            records: [{ key: counter, title: 'Lab' + counter, time: this.state.sectionTime }, ...this.state.records],
+            records: [
+                { key: counter, title: 'Lab' + counter, time: this.state.sectionTime, color: colors[index] },
+                ...this.state.records,
+            ],
         });
     }
 
     _clearRecord() {
-        this.setState({
-            stopWatch: false,
-            resetWatch: true,
-            initialTime: 0,
-            currentTime: 0,
-            recordTime: 0,
-            timeAccumulation: 0,
-            totalTime: '00:00.00',
-            sectionTime: '00:00.00',
-            recordCounter: 0,
-            records: [],
-        });
+        this.state = { ...initialState };
     }
 
     render() {
