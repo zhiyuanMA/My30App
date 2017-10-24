@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         color: '#555',
     },
     totalTime: {
-        fontSize: Utils.size.width === 375 ? 80 : 70,
+        fontSize: Utils.size.width === 375 ? 70 : 60,
         fontWeight: '100',
         color: '#222',
     },
