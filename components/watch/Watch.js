@@ -25,6 +25,7 @@ export default class Watch extends Component {
     }
 
     componentWillUnmount() {
+      clearInterval(interval);
         this._stopWatch();
         this._clearRecord();
     }
@@ -90,7 +91,6 @@ export default class Watch extends Component {
         this.setState({
             stopWatch: true,
         });
-        clearInterval(interval);
     }
 
     _addRecord() {
@@ -114,7 +114,7 @@ export default class Watch extends Component {
     }
 
     _clearRecord() {
-        this.state = { ...initialState };
+        this.setState({ ...initialState });
     }
 
     render() {
