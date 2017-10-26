@@ -25,7 +25,7 @@ export default class Watch extends Component {
     }
 
     componentWillUnmount() {
-      clearInterval(interval);
+        clearInterval(interval);
         this._stopWatch();
         this._clearRecord();
     }
