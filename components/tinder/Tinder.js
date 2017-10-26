@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-around',
-        top: Utils.size.height * 0.78 - 50,
+        top: Utils.size.height * 0.78 - 39,
         position: 'absolute',
     },
     smallContainer: {

@@ -9,14 +9,14 @@ export default class Card extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired,
+        img: PropTypes.number.isRequired,
     };
 
     render() {
         const { id, name, img } = this.props;
         return (
             <View key={id} style={styles.card}>
-                <Image style={styles.img} source={require({img})} />
+                <Image style={styles.img} source={img} />
                 <View style={styles.info}>
                     <View>
                         <Text style={styles.text}>
@@ -42,25 +42,25 @@ export default class Card extends Component {
 const styles = StyleSheet.create({
     card: {
         width: Utils.size.width - 20,
-        height: Utils.size.height * 0.75,
+        height: Utils.size.height * 0.75 - 100,
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#e1e1e1',
-        position: 'relative',
         backgroundColor: '#fff',
-        top: 13,
+        top: 10,
+        right: 15,
     },
     info: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: 60,
+        height: 30,
         paddingLeft: 20,
         paddingRight: 5,
     },
-    img:{
-      width: Utils.size.width - 20,
-      height: Utils.size.height * 0.75 - 60,
+    img: {
+        width: Utils.size.width - 20,
+        height: Utils.size.height * 0.75 - 150,
     },
     text: {
         fontSize: 20,

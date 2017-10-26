@@ -4,9 +4,9 @@ import SwipeCards from 'react-native-swipe-cards';
 import Card from './Card';
 
 const imgs = [
-    '../../asserts/img/Bob.jpg',
-    '../../asserts/img/Stuart.png',
-    '../../asserts/img/Phil.jpg',
+    require('../../asserts/img/Bob.jpg'),
+    require('../../asserts/img/Stuart.png'),
+    require('../../asserts/img/Phil.jpg'),
 ];
 const names = ['Bob', 'Stuart', 'Phil'];
 const cards = imgs.map(function(elem, index) {
@@ -19,21 +19,16 @@ export default class SwipeCard extends Component {
         this.state = { cards };
     }
 
-    _next() {
-        const { cards } = this.state;
-        cards.pop();
-        this.setState({ cards });
-    }
-
     render() {
         return (
             <SwipeCards
+                stack={true}
+                cardKey='id'
                 cards={this.state.cards}
                 renderCard={cardData => <Card {...cardData} />}
-                // handleYup={this._next()}
-                // handleNope={this._next()}
                 showYup={false}
                 showNope={false}
+                loop={true}
             />
         );
     }
